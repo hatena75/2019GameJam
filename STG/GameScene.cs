@@ -8,7 +8,8 @@ namespace STG
 {
     class GameScene : asd.Scene
     {
-        Player player, player2;
+        Player player2;
+        SpeedPlayer player;
 
         bool isSceneChanging = false;
 
@@ -117,13 +118,13 @@ namespace STG
                     if (Stage.stagelist[GameScene.stage_now][i, j] == 2)
                     {
 
-                        asd.Engine.AddObject2D(new RushingEnemy(new asd.Vector2DF(j * gridsizeX + Correct_posX, i * gridsizeY + Correct_posY), player));
+                        //asd.Engine.AddObject2D(new RushingEnemy(new asd.Vector2DF(j * gridsizeX + Correct_posX, i * gridsizeY + Correct_posY), player));
                     }
 
                     if (Stage.stagelist[GameScene.stage_now][i, j] == 3)
                     {
 
-                        asd.Engine.AddObject2D(new MovingEnemy(new asd.Vector2DF(j * gridsizeX + Correct_posX, i * gridsizeY + Correct_posY), player));
+                        //asd.Engine.AddObject2D(new MovingEnemy(new asd.Vector2DF(j * gridsizeX + Correct_posX, i * gridsizeY + Correct_posY), player));
                     }
 
                     
