@@ -8,8 +8,7 @@ namespace STG
 {
     class GameScene : asd.Scene
     {
-        Player player2;
-        SpeedPlayer player;
+        PlayerOrigin player, player2;
 
         bool isSceneChanging = false;
 
@@ -63,7 +62,7 @@ namespace STG
 
 
             player = new SpeedPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash);
-            player2 = new Player(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T);
+            player2 = new NormalPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T);
 
             gameLayer.AddObject(player);
             gameLayer.AddObject(player2);

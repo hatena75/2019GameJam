@@ -58,7 +58,7 @@ namespace STG
 
         protected int count;
 
-        protected Player player; //GameScineでnewされたプレイヤー情報を格納するための変数
+        protected NormalPlayer player; //GameScineでnewされたプレイヤー情報を格納するための変数
 
         //破壊効果音
         protected asd.SoundSource deathSound;
@@ -146,7 +146,7 @@ namespace STG
 
         }
         */
-        public Enemy(Vector2DF pos, Player player)
+        public Enemy(Vector2DF pos, NormalPlayer player)
         {
             Position = pos;
             this.player = player;

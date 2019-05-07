@@ -10,7 +10,7 @@ namespace STG
     {
         private asd.Vector2DF moveVelocity;
 
-        public RushingEnemy(asd.Vector2DF pos,Player player)
+        public RushingEnemy(asd.Vector2DF pos,NormalPlayer player)
             : base(pos, player)
         {
             CenterPosition = new asd.Vector2DF(Texture.Size.X / 2.0f, Texture.Size.Y / 2.0f);

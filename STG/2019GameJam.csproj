@@ -86,7 +86,7 @@
     <Compile Include="PenetrateBullet.cs" />
     <Compile Include="PlayerOrigin.cs" />
     <Compile Include="SpeedPlayer.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="NormalPlayer.cs" />
     <Compile Include="Etc\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Etc\Rand.cs" />

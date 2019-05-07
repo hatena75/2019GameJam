@@ -7,7 +7,7 @@ using asd;
 
 namespace STG
 {
-    public class Player : PlayerOrigin
+    public class NormalPlayer : PlayerOrigin
     {
         //プレイヤーごとの固有値
         private const int moveSpeed = 4;
@@ -15,7 +15,7 @@ namespace STG
         private const int BulletSpeed = 5;
         private const int BulletRange = 30;
 
-        public Player(Keys right, Keys left, Keys up, Keys down, Keys attack) : base(right, left, up, down, attack)
+        public NormalPlayer(Keys right, Keys left, Keys up, Keys down, Keys attack) : base(right, left, up, down, attack)
         {
             Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Player2.png");
 
