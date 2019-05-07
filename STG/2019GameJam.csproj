@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA0324E1-A058-4A2F-9DCD-4FD1CD4C9359}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>STG</RootNamespace>
+    <AssemblyName>STG</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Altseed, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\AltseedDotNet.1.1.6\lib\net45\Altseed.dll</HintPath>
+    </Reference>
+    <Reference Include="MilleFeuille.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MilleFeuille.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Background.cs" />
+    <Compile Include="Bomb.cs" />
+    <Compile Include="Enemy\MovingEnemy.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_PenetrateShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_PenetrateTriShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_SpeedThreeShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_TriShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_TwoShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_ThreeShot.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_Bomb.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect_Barrier.cs" />
+    <Compile Include="ItemGetEffect\ItemGetEffect.cs" />
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Item\Item.cs" />
+    <Compile Include="Item\BarrierItem.cs" />
+    <Compile Include="Item\SpeedThreeShotItem.cs" />
+    <Compile Include="Item\PenetrateTriShotItem.cs" />
+    <Compile Include="Item\TriShotItem.cs" />
+    <Compile Include="Item\TwoShotItem.cs" />
+    <Compile Include="Item\ThereeShotItem.cs" />
+    <Compile Include="Item\PenetrateShotItem.cs" />
+    <Compile Include="Item\BombItem.cs" />
+    <Compile Include="Barrier.cs" />
+    <Compile Include="BreakObjectEffect.cs" />
+    <Compile Include="CollidableObject.cs" />
+    <Compile Include="Enemy\Enemy.cs" />
+    <Compile Include="GameOverScene.cs" />
+    <Compile Include="GameScene.cs" />
+    <Compile Include="MenuScene.cs" />
+    <Compile Include="PenetrateBullet.cs" />
+    <Compile Include="SpeedPlayer.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="Etc\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Etc\Rand.cs" />
+    <Compile Include="Enemy\RushingEnemy.cs" />
+    <Compile Include="Etc\Singleton.cs" />
+    <Compile Include="Stage.cs" />
+    <Compile Include="TitleScene.cs" />
+    <Compile Include="Wall.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\MilleFeuille.Core.dll">
+      <Link>MilleFeuille.Core.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AltseedDotNet.1.1.6\build\net45\AltseedDotNet.targets" Condition="Exists('..\packages\AltseedDotNet.1.1.6\build\net45\AltseedDotNet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\AltseedDotNet.1.1.6\build\net45\AltseedDotNet.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AltseedDotNet.1.1.6\build\net45\AltseedDotNet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
