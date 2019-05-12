@@ -69,7 +69,7 @@ namespace STG
 
         public PlayerOrigin(Keys right, Keys left, Keys up, Keys down, Keys attack)
         {
-            Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Player2.png");
+            Texture = asd.Engine.Graphics.CreateTexture2D("Resources/NormalPlayer.png");
 
             CenterPosition = new asd.Vector2DF(Texture.Size.X / 2.0f, Texture.Size.Y / 2.0f); //中心に判定を設定
 

@@ -11,14 +11,24 @@ using wraikny.MilleFeuille.Core.Input.Controller;
 
 namespace STG
 {
-    class MenuScene : asd.Scene
+    class CharSelectScene : asd.Scene
     {
+        const int playerNum = 2;
+
+        int stage_num;
+        List<PlayerType> typelist = new List<PlayerType>();
         bool isTitleChanging = false;
         asd.Layer2D uiLayer;
 
-        public MenuScene()
+        public enum PlayerType
+        {
+            Normal, Speed
+        }
+
+        public CharSelectScene(int index)
         {
             uiLayer = new asd.Layer2D();
+            stage_num = index;
         }
 
         protected override void OnRegistered()
@@ -31,22 +41,16 @@ namespace STG
             background.Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Menu.png");
             uiLayer.AddObject(background);
 
-            var button1 = CreateButton(1, 0.0f, -150.0f);
-            var button2 = CreateButton(2, 0.0f, -50.0f);
-            var button3 = CreateButton(3, 0.0f, 50.0f);
-            var button4 = CreateButton(4, 0.0f, 150.0f);
+            var button1 = CreateButton(PlayerType.Normal, 0.0f, -150.0f, typelist);
+            var button2 = CreateButton(PlayerType.Speed, 0.0f, -50.0f, typelist);
 
             button1
                 .Chain(button2, ButtonDirection.Down)
-                .Chain(button3, ButtonDirection.Down)
-                .Chain(button4, ButtonDirection.Down)
                 .Chain(button1, ButtonDirection.Down)
             ;
 
             uiLayer.AddObject(button1.GetComponent().Owner);
             uiLayer.AddObject(button2.GetComponent().Owner);
-            uiLayer.AddObject(button3.GetComponent().Owner);
-            uiLayer.AddObject(button4.GetComponent().Owner);
 
             var selecter = new ControllerButtonSelecter(button1);
 
@@ -66,14 +70,14 @@ namespace STG
 
         }
 
-        private static IControllerButton CreateButton(int index, float x, float y)
+        private static IControllerButton CreateButton(PlayerType type, float x, float y, List<PlayerType> list)
         {
             var defaultColor = new asd.Color(150, 150, 150);
             var hoverColor = new asd.Color(255, 255, 255);
             //var holdColor =  new asd.Color(50, 50, 50);
 
             var stage_button = new asd.TextureObject2D();
-            stage_button.Texture = asd.Engine.Graphics.CreateTexture2D($"Resources/stage{index}.png");
+            stage_button.Texture = asd.Engine.Graphics.CreateTexture2D($"Resources/{type.ToString()}Player.png");
 
             var size = new asd.Vector2DF(250.0f, 75.0f);
             var buttonArea = new asd.RectF(-size / 2.0f, size);
@@ -81,7 +85,7 @@ namespace STG
             var buttonObj =
                 new asd.TextureObject2D()
                 {
-                    Texture = asd.Engine.Graphics.CreateTexture2D($"Resources/stage{index}.png")
+                    Texture = asd.Engine.Graphics.CreateTexture2D($"Resources/{type.ToString()}Player.png")
                     
                     ,
                     Color = defaultColor
@@ -105,20 +109,17 @@ namespace STG
             //button.HoverEvent += owner => { };
             //button.HoldEvent += owner => { };
             button.OnEnteredEvent += owner => {
-                Console.WriteLine("Button{0}: OnEntered", index);
                 owner.Color = hoverColor;
             };
             button.OnPushedEvent += owner => {
-                Console.WriteLine("Button{0}: OnPushed", index);
-                asd.Engine.ChangeSceneWithTransition(new CharSelectScene(index), new asd.TransitionFade(1.0f, 1.0f));
+                //asd.Engine.ChangeSceneWithTransition(new GameScene(type, stage), new asd.TransitionFade(1.0f, 1.0f));
+                list.Add(type);
                 owner.Color = hoverColor;
             };
             button.OnReleasedEvent += owner => {
-                Console.WriteLine("Button{0}: OnReleased", index);
                 owner.Color = hoverColor;
             };
             button.OnExitedEvent += owner => {
-                Console.WriteLine("Button{0}: OnExited", index);
                 owner.Color = defaultColor;
             };
 
@@ -136,7 +137,13 @@ namespace STG
                 isTitleChanging = true;
             }
 
-            
+            if (typelist.Count == playerNum && isTitleChanging == false) //プレイヤー数による
+            {
+                asd.Engine.ChangeSceneWithTransition(new GameScene(typelist, stage_num), new asd.TransitionFade(1.0f, 1.0f));
+
+                isTitleChanging = true;
+            }
+
         }
     }
 }

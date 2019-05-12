@@ -16,6 +16,7 @@ namespace STG
 
         int count = 0;
 
+        List<CharSelectScene.PlayerType> typelist = new List<CharSelectScene.PlayerType>();
         public static int stage_now = 0;
 
         public const int gridsizeX = 32;
@@ -40,9 +41,10 @@ namespace STG
             stage_now = 0;
         }
 
-        public GameScene(int index)
+        public GameScene(List<CharSelectScene.PlayerType> list, int index)
         {
             stage_now = index - 1;
+            typelist = list;
         }
 
         protected override void OnRegistered()
@@ -60,9 +62,19 @@ namespace STG
 
             backgroundLayer.AddObject(bg);
 
+            player = typelist[0] switch
+            {
+                CharSelectScene.PlayerType.Normal => (PlayerOrigin)new NormalPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash),
+                CharSelectScene.PlayerType.Speed => (PlayerOrigin)new SpeedPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash),
+                _ => throw new InvalidOperationException()
+            };
 
-            player = new SpeedPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash);
-            player2 = new NormalPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T);
+            player2 = typelist[1] switch
+            {
+                CharSelectScene.PlayerType.Normal => (PlayerOrigin)new NormalPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T),
+                CharSelectScene.PlayerType.Speed => (PlayerOrigin)new SpeedPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T),
+                _ => throw new InvalidOperationException()
+            };
 
             gameLayer.AddObject(player);
             gameLayer.AddObject(player2);

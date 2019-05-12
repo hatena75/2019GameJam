@@ -17,7 +17,7 @@ namespace STG
 
         public NormalPlayer(Keys right, Keys left, Keys up, Keys down, Keys attack) : base(right, left, up, down, attack)
         {
-            Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Player2.png");
+            Texture = asd.Engine.Graphics.CreateTexture2D("Resources/NormalPlayer.png");
 
         }
 
