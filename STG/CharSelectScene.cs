@@ -62,15 +62,15 @@ namespace STG
             // 文字描画オブジェクトのインスタンスをエンジンへ追加する。
             uiLayer.AddObject(PlayerSelectText);
 
-            var button1 = CreateButton(PlayerType.Normal, 0.0f, -150.0f, typelist);
-            var button2 = CreateButton(PlayerType.Speed, 0.0f, -50.0f, typelist);
-            var button3 = CreateButton(PlayerType.Sniper, 0.0f, 50.0f, typelist);
+            var button1 = CreateButton(PlayerType.Normal, -150.0f, 0.0f, typelist);
+            var button2 = CreateButton(PlayerType.Speed, -50.0f, 0.0f, typelist);
+            var button3 = CreateButton(PlayerType.Sniper, 50.0f, 0.0f, typelist);
 
 
             button1
-                .Chain(button2, ButtonDirection.Down)
-                .Chain(button3, ButtonDirection.Down)
-                .Chain(button1, ButtonDirection.Down)
+                .Chain(button2, ButtonDirection.Right)
+                .Chain(button3, ButtonDirection.Right)
+                .Chain(button1, ButtonDirection.Right)
             ;
 
             uiLayer.AddObject(button1.GetComponent().Owner);
