@@ -129,23 +129,6 @@ namespace STG
             }
         }
 
-        //コンストラクタ
-        /*
-        protected Enemy(asd.Vector2DF pos,asd.Vector2DF movevector,Player player)
-            : base()
-        {
-            Position = pos;
-
-            Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Player2.png");
-
-            CenterPosition = new asd.Vector2DF(Texture.Size.X / 2.0f, Texture.Size.Y / 2.0f);
-
-            count = 0;
-
-            this.player = player;　//GameScineでnewされた情報を格納
-
-        }
-        */
         public Enemy(Vector2DF pos, NormalPlayer player)
         {
             Position = pos;
@@ -167,38 +150,6 @@ namespace STG
         {
             foreach (var obj in Layer.Objects)
                 CollideWith((obj as CollidableObject));
-            /*
-            //ジャンプ可能か（地面についている状態か）判定
-            if (IsAbleToGo2(Position.X + 5, Position.Y + 32) == 1 || IsAbleToGo2(Position.X + 26, Position.Y + 32) == 1)
-                ground = true;
-            else
-                ground = false;
-
-
-            //右壁衝突判定
-            if (IsAbleToGo2(Position.X + 31, Position.Y + 5) == 1 || IsAbleToGo2(Position.X + 31, Position.Y + 26) == 1)
-                Position = new asd.Vector2DF(((int)Position.X / 32) * 32, Position.Y);
-
-            //左壁衝突判定
-            if (IsAbleToGo2(Position.X, Position.Y + 5) == 1 || IsAbleToGo2(Position.X, Position.Y + 26) == 1)
-                Position = new asd.Vector2DF(((int)Position.X / 32) * 32 + 32, Position.Y);
-
-            //床衝突判定（Y座標がずらされてしまうため、空中にいるときは判定しない）
-            if ((IsAbleToGo2(Position.X, Position.Y + 31) == 1 || IsAbleToGo2(Position.X + 31, Position.Y + 31) == 1) && ground == true)
-                Position = new asd.Vector2DF(Position.X, ((int)Position.Y / 32) * 32);
-            
-            //天井衝突判定
-            if (IsAbleToGo2(Position.X, Position.Y) == 1 || IsAbleToGo2(Position.X + 31, Position.Y) == 1)
-                Position = new asd.Vector2DF(Position.X, ((int)Position.Y / 32) * 32 + 32);
-            
-
-            //重力
-            if (ground == false)
-            {
-                Position = Position + new asd.Vector2DF(0, +5);
-            }
-            */
-
             
 
             //破壊音量を下げる。

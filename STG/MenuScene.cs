@@ -16,6 +16,8 @@ namespace STG
         bool isTitleChanging = false;
         asd.Layer2D uiLayer;
 
+        
+
         public MenuScene()
         {
             uiLayer = new asd.Layer2D();
@@ -63,6 +65,8 @@ namespace STG
             selecter.AddController(keyboard);
 
             uiLayer.AddComponent(selecter, "Selecter");
+
+            
 
         }
 

@@ -89,6 +89,7 @@ namespace STG
             //IDはnull(BGMは流れてない）
             playingBgmId = null;
             
+            
         }
 
         //ステージ作成用関数
@@ -177,7 +178,7 @@ namespace STG
             if (count == 10)
             {
                 playingBgmId = asd.Engine.Sound.Play(bgm);
-
+                asd.Engine.Sound.SetVolume((int)playingBgmId, 0.1f);
                 //ステージ描画(初期化)
                 StageCreate();
                 CharacterCreate();

@@ -15,6 +15,9 @@ namespace STG
     {
         const int playerNum = 2;
 
+        // 文字描画オブジェクトを生成する。
+        asd.TextObject2D PlayerSelectText = new asd.TextObject2D();
+
         int stage_num;
         List<PlayerType> typelist = new List<PlayerType>();
         bool isTitleChanging = false;
@@ -40,6 +43,24 @@ namespace STG
             var background = new asd.TextureObject2D();
             background.Texture = asd.Engine.Graphics.CreateTexture2D("Resources/Menu.png");
             uiLayer.AddObject(background);
+
+            // フォントを生成する。
+            var font = asd.Engine.Graphics.CreateFont("font.aff");
+
+            
+
+            // 描画に使うフォントを設定する。
+            PlayerSelectText.Font = font;
+
+            // 描画位置を指定する。
+            PlayerSelectText.Position = new asd.Vector2DF(0, 0);
+
+            Singleton.Getsingleton();
+            // 描画する文字列を指定する。
+            PlayerSelectText.Text = "";
+
+            // 文字描画オブジェクトのインスタンスをエンジンへ追加する。
+            uiLayer.AddObject(PlayerSelectText);
 
             var button1 = CreateButton(PlayerType.Normal, 0.0f, -150.0f, typelist);
             var button2 = CreateButton(PlayerType.Speed, 0.0f, -50.0f, typelist);
@@ -143,6 +164,17 @@ namespace STG
 
                 isTitleChanging = true;
             }
+
+            if (typelist.Count != playerNum)
+            {
+                PlayerSelectText.Text = $"Player　{typelist.Count + 1}SELECTING";
+            }
+            else
+            {
+                PlayerSelectText.Text = $"NOW　LOADING...";
+            }
+
+
 
         }
     }

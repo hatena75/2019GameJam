@@ -44,7 +44,7 @@ namespace STG
 
             Singleton.Getsingleton();
             // 描画する文字列を指定する。
-            obj.Text = $"Player{WinPlayer} WIN!";
+            obj.Text = $"Player　{WinPlayer}WIN!";
 
             // 文字描画オブジェクトのインスタンスをエンジンへ追加する。
             layertext.AddObject(obj);
