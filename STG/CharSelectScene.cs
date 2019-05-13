@@ -25,7 +25,7 @@ namespace STG
 
         public enum PlayerType
         {
-            Normal, Speed
+            Normal, Speed, Sniper
         }
 
         public CharSelectScene(int index)
@@ -64,14 +64,19 @@ namespace STG
 
             var button1 = CreateButton(PlayerType.Normal, 0.0f, -150.0f, typelist);
             var button2 = CreateButton(PlayerType.Speed, 0.0f, -50.0f, typelist);
+            var button3 = CreateButton(PlayerType.Sniper, 0.0f, 50.0f, typelist);
+
 
             button1
                 .Chain(button2, ButtonDirection.Down)
+                .Chain(button3, ButtonDirection.Down)
                 .Chain(button1, ButtonDirection.Down)
             ;
 
             uiLayer.AddObject(button1.GetComponent().Owner);
             uiLayer.AddObject(button2.GetComponent().Owner);
+            uiLayer.AddObject(button3.GetComponent().Owner);
+
 
             var selecter = new ControllerButtonSelecter(button1);
 

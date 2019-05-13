@@ -84,6 +84,7 @@
     <Compile Include="GameScene.cs" />
     <Compile Include="CharSelectScene.cs" />
     <Compile Include="MenuScene.cs" />
+    <Compile Include="SniperPlayer.cs" />
     <Compile Include="PenetrateBullet.cs" />
     <Compile Include="PlayerOrigin.cs" />
     <Compile Include="SpeedPlayer.cs" />

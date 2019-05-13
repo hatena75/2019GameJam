@@ -66,6 +66,7 @@ namespace STG
             {
                 CharSelectScene.PlayerType.Normal => (PlayerOrigin)new NormalPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash),
                 CharSelectScene.PlayerType.Speed => (PlayerOrigin)new SpeedPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash),
+                CharSelectScene.PlayerType.Sniper => (PlayerOrigin)new SniperPlayer(asd.Keys.Right, asd.Keys.Left, asd.Keys.Up, asd.Keys.Down, asd.Keys.Slash),
                 _ => throw new InvalidOperationException()
             };
 
@@ -73,6 +74,7 @@ namespace STG
             {
                 CharSelectScene.PlayerType.Normal => (PlayerOrigin)new NormalPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T),
                 CharSelectScene.PlayerType.Speed => (PlayerOrigin)new SpeedPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T),
+                CharSelectScene.PlayerType.Sniper => (PlayerOrigin)new SniperPlayer(asd.Keys.D, asd.Keys.A, asd.Keys.W, asd.Keys.S, asd.Keys.T),
                 _ => throw new InvalidOperationException()
             };
 
